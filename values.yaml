@@ -36,11 +36,14 @@ resources:
 global: 
   postgresql:
     auth:
-      postgresPassword: "MySupErPaSSwOrd"
+      postgresPassword:
+        secretKeyRef:
+          name: password
+          key: password
       username: "userdemo"
       password: "passworddemo"
       database: "demodb"
-
+              
 # Contrainte de sécurité Openshift
 postgresql:
   fullnameOverride: postgres-demo
